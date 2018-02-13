@@ -32,8 +32,8 @@ passport.use(new google.Strategy({
 }, (accessToken, refreshToken, profile, cb) => findOrCreate('gg', profile, cb) ));
 
 passport.use(new twitter.Strategy({
-  consumerKey: serverConfig.ttIdLocalHost,
-  consumerSecret: serverConfig.ttSecretLocalHost,
+  consumerKey: serverConfig.ttId,
+  consumerSecret: serverConfig.ttSecret,
   callbackURL: url.resolve(serverConfig.hostUrl, 'ttredirect')
 }, (token, tokenSecret, profile, cb) => findOrCreate('tt', profile, cb) ));
 

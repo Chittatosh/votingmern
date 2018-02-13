@@ -1,0 +1,7 @@
+.build/
+bundle.js
+desktop.ini
+dist/
+node_modules/
+server/serverConfig.js
+yarn.lock

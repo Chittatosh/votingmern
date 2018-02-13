@@ -1,0 +1,72 @@
+{
+  "name": "votingmern",
+  "version": "1.0.0",
+  "description": "Voting App for freeCodeCamp",
+  "main": "dist/server/index.js",
+  "author": "chittatosh",
+  "license": "ISC",
+  "engines": {
+    "node": "8.9.0"
+  },
+  "scripts": {
+    "start": "node dist/server/index.js",
+    "heroku-postbuild": "webpack -p && rm -rf dist && mkdir dist && mkdirp dist/server && mkdirp dist/client && mkdirp dist/common && babel server --out-dir dist/server && babel client --out-dir dist/client && babel common --out-dir dist/common",
+    "serve": "nodemon --exec babel-node server --ignore public/ --ignore tests/",
+    "dev": "webpack -wd",
+    "start:server": "rm -rf ./build && webpack --config  webpack.config.server.js",
+    "start:client": "webpack-dev-server --config webpack.config.client.js",
+    "hot": "rm -rf ./.build && npm-run-all --parallel start:server start:client",
+    "test": "jest --watch"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "connect-ensure-login": "^0.1.1",
+    "connect-mongo": "^2.0.0",
+    "cross-fetch": "^1.1.1",
+    "d3": "^4.13.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mkdirp": "^0.5.1",
+    "mongoose": "^4.13.5",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "pretty-error": "^2.1.1",
+    "prettyjson": "^1.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.0.5",
+    "jest-fetch-mock": "^1.4.0",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.2",
+    "redux-mock-store": "^1.4.0",
+    "reload-server-webpack-plugin": "^1.0.1",
+    "start-server-webpack-plugin": "^2.2.0",
+    "webpack-dev-server": "^2.11.1",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./tests/setupJest.js"
+    ]
+  }
+}

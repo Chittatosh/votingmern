@@ -10,18 +10,18 @@ const alert = message =>
     </button>
   </div>;
 
-const CardListComponent = ({ _idsForPageArr, fbggId, isFetching }) => (
+const CardListComponent = ({ _idArrForPage, fbggId, isFetching }) => (
   <div className="card-columns">
     {!fbggId && alert('Sign in to create new polls or to add new choices to existing polls!')}
     {isFetching==='newpoll_id' && alert('Fetching...')}
-    {_idsForPageArr.map(_id => 
+    {_idArrForPage.map(_id => 
       <CardContainer key={_id} {...{_id}}/>
     )}
   </div>
 );
 
 CardListComponent.propTypes = {
-  _idsForPageArr: PropTypes.arrayOf(PropTypes.string).isRequired,
+  _idArrForPage: PropTypes.arrayOf(PropTypes.string).isRequired,
   fbggId: PropTypes.string.isRequired,
   isFetching: PropTypes.string.isRequired
 };

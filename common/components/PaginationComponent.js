@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PageNumComponent from './PageNumComponent';
 import SearchBoxContainer from '../containers/SearchBoxContainer';
 
-const PaginationComponent = ({ pageCount, btwnSlashNPage, numFromUrl }) => {
+const PaginationComponent = ({ totalPages, btwnSlashNPage, pageNumFromUrl }) => {
 
   const iteratorButton = (hiddenBool, buttonText) =>
     hiddenBool 
@@ -14,21 +14,21 @@ const PaginationComponent = ({ pageCount, btwnSlashNPage, numFromUrl }) => {
       :
       <PageNumComponent 
         className="page-item"
-        {...{btwnSlashNPage, numFromUrl, buttonText}} 
+        {...{btwnSlashNPage, pageNumFromUrl, buttonText}} 
       />;
 
   const pagination = 
     <nav aria-label="Page navigation example">
       <ul className="pagination justify-content-center">
-        {iteratorButton(numFromUrl===1, 'Previous')}
-        {Array.from(Array(pageCount).keys()).map(index => 
+        {iteratorButton(pageNumFromUrl===1, 'Previous')}
+        {Array.from(Array(totalPages).keys()).map(index => 
           <PageNumComponent 
             key={index} 
             className="page-item"
-            {...{btwnSlashNPage, numFromUrl, buttonText: ''+(index+1)}} 
+            {...{btwnSlashNPage, pageNumFromUrl, buttonText: ''+(index+1)}} 
           />
         )}
-        {iteratorButton(numFromUrl===pageCount, 'Next')}
+        {iteratorButton(pageNumFromUrl===totalPages, 'Next')}
       </ul>
     </nav>;
 
@@ -47,9 +47,9 @@ const PaginationComponent = ({ pageCount, btwnSlashNPage, numFromUrl }) => {
 };
 
 PaginationComponent.propTypes = {
-  pageCount: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
   btwnSlashNPage: PropTypes.string.isRequired,
-  numFromUrl: PropTypes.number.isRequired
+  pageNumFromUrl: PropTypes.number.isRequired
 };
 
 export default PaginationComponent;

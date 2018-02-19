@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const PageNumComponent = ({ btwnSlashNPage, numFromUrl, buttonText }) => {
+const PageNumComponent = ({ btwnSlashNPage, pageNumFromUrl, buttonText }) => {
 
   const linkNum = (buttonText) => {
     switch (buttonText) {
     case 'Next':
-      return numFromUrl + 1;
+      return pageNumFromUrl + 1;
     case 'Previous':
-      return numFromUrl - 1;
+      return pageNumFromUrl - 1;
     default:
       return buttonText;
     }
@@ -24,7 +24,7 @@ const PageNumComponent = ({ btwnSlashNPage, numFromUrl, buttonText }) => {
       }} 
       className="page-link" 
       to={
-        btwnSlashNPage==='allpolls' && numFromUrl===1 && buttonText==='1'
+        btwnSlashNPage==='allpolls' && pageNumFromUrl===1 && buttonText==='1'
           ? '/'
           : ('/' + btwnSlashNPage + 'page' + linkNum(buttonText))
       }
@@ -37,7 +37,7 @@ const PageNumComponent = ({ btwnSlashNPage, numFromUrl, buttonText }) => {
 
 PageNumComponent.propTypes = {
   btwnSlashNPage: PropTypes.string.isRequired,
-  numFromUrl: PropTypes.number.isRequired,
+  pageNumFromUrl: PropTypes.number.isRequired,
   buttonText: PropTypes.string.isRequired
 };
 

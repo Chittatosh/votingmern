@@ -4,19 +4,19 @@ import NavBarContainer from '../containers/NavBarContainer';
 import PaginationComponent from '../components/PaginationComponent';
 import CardListContainer from '../containers/CardListContainer';
 
-const AppComponent = ({ pageCount, btwnSlashNPage, numFromUrl, _idsForPageArr }) => (
+const AppComponent = ({ totalPages, btwnSlashNPage, pageNumFromUrl, _idArrForPage }) => (
   <div>
     <NavBarContainer {...{btwnSlashNPage}} />
-    <PaginationComponent {...{pageCount, btwnSlashNPage, numFromUrl}} />
-    <CardListContainer {...{_idsForPageArr}} />
+    <PaginationComponent {...{totalPages, btwnSlashNPage, pageNumFromUrl}} />
+    <CardListContainer {...{_idArrForPage}} />
   </div>
 );
 
 AppComponent.propTypes = {
-  pageCount: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
   btwnSlashNPage: PropTypes.string.isRequired,
-  numFromUrl: PropTypes.number.isRequired,
-  _idsForPageArr: PropTypes.arrayOf(PropTypes.string).isRequired
+  pageNumFromUrl: PropTypes.number.isRequired,
+  _idArrForPage: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default AppComponent;

@@ -29,16 +29,16 @@ const mapStateToProps = ({poll_idArr, normPollObj, searchTerm}, {match:{params:{
   // Get 'my' or 'all' and page number from url
   const pageSplitArr = (filter||'allpollspage1').split('page');
   const btwnSlashNPage = pageSplitArr[0];
-  const numFromUrl = +pageSplitArr[1];
+  const pageNumFromUrl = +pageSplitArr[1];
   // Get polls created by a user if required by the url
   const urlFilteredKeysArr = filterByUrl(searchedKeysArr, normPollObj, btwnSlashNPage);
   const pollCount = urlFilteredKeysArr.length;
-  const pageCount = Math.floor(pollCount/pollsPerPage) + (pollCount%pollsPerPage ? 1 : 0);
+  const totalPages = Math.floor(pollCount/pollsPerPage) + (pollCount%pollsPerPage ? 1 : 0);
   // Get polls by page number
-  const sliceIndex = (numFromUrl-1)*pollsPerPage;
-  const _idsForPageArr = getPollsForAPage(urlFilteredKeysArr, normPollObj, sliceIndex);
+  const sliceIndex = (pageNumFromUrl-1)*pollsPerPage;
+  const _idArrForPage = getPollsForAPage(urlFilteredKeysArr, normPollObj, sliceIndex);
 
-  return { pageCount, btwnSlashNPage, numFromUrl, _idsForPageArr };
+  return { totalPages, btwnSlashNPage, pageNumFromUrl, _idArrForPage };
 };
 
 const AppContainer = connect(mapStateToProps)(AppComponent);

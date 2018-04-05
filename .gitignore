@@ -4,4 +4,4 @@ desktop.ini
 dist/
 node_modules/
 server/serverConfig.js
-yarn.lock
+yarn-error.log

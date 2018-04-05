@@ -21,6 +21,12 @@ const render = container => {
 
 render(AppContainer);
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('./service-worker.js')
+    .then(() => console.log('Service Worker Registered'));
+}
+
 if (module.hot) {
   module.hot.accept('../common/containers/AppContainer', () => {
     const NextRootContainer = require('../common/containers/AppContainer').default;  

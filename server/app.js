@@ -2,15 +2,19 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import connectMongo from 'connect-mongo';
+import sslRedirect from 'heroku-ssl-redirect';
+
 import mongoose from './mongoose';
 import passport from './passport';
 import serverConfig from './serverConfig';
+
 
 require('pretty-error').start();
 
 const MongoStore = connectMongo(session);
 const app = express();
 
+app.use(sslRedirect());
 app.use(bodyParser.json());
 app.use(session({
   secret: serverConfig.session,

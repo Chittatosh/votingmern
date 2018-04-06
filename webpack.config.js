@@ -1,17 +1,19 @@
 const path = require('path');
 
-module.exports = {
-  entry: './client/index.js',
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
-  },
+const config = {
+  mode: 'production',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader'
-      }
-    ]
-  }
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'common'),
+        ],
+        use: 'babel-loader',
+      },
+    ],
+  },
 };
+
+module.exports = config;

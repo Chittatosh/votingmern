@@ -17,7 +17,8 @@ const getHtmlString = (serializedComponent, serializedState) => {
         <body class="container">
           <div id="root">${serializedComponent}</div>
           <script>window.__PRELOADED_STATE__ = ${serializedState}</script>
-          ${app.get('env') === 'development' ? '<script src="http://localhost:3001/client.js"></script>' : '<script src="/bundle.js" charset="utf-8"></script>'}
+          <script src="https://d3js.org/d3.v5.min.js"></script>
+          ${app.get('env') === 'development' ? '<script src="http://localhost:3001/main.js"></script>' : '<script src="/main.js" charset="utf-8"></script>'}
         </body>
         <footer>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">

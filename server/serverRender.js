@@ -1,12 +1,14 @@
 import React from 'react';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { StaticRouter } from 'react-router';
 import { renderToString } from 'react-dom/server';
+
 import Poll from './schema';
 import { catchFn } from './api';
 import getHtmlString from './getHtmlString';
-import configureStore from '../client/configureStore';
+import reducer from '../common/reducer';
 import AppContainer from '../common/containers/AppContainer';
 
 const serverRender = (req, res) => {
@@ -25,7 +27,7 @@ const serverRender = (req, res) => {
         fetchError: '', 
         searchTerm: ''
       };
-      const store = configureStore(preloadedState);
+      const store = createStore(reducer, preloadedState);
       const serializedState = JSON.stringify(store.getState()).replace(/</g, '\\x3c');
       const context = {};
       const serializedComponent = renderToString(
@@ -35,7 +37,6 @@ const serverRender = (req, res) => {
           </StaticRouter>
         </Provider>,
       );
-
       res.send(getHtmlString(serializedComponent, serializedState));
     })
     .catch(error => catchFn(error, res));

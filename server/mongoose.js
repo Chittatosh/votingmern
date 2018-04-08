@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
-import serverConfig from './serverConfig';
+
+require('dotenv').config();
 
 mongoose.Promise = global.Promise;
 
 mongoose.set('debug', true);
 
-mongoose.connect(serverConfig.mlabUri, { useMongoClient: true })
+mongoose
+  .connect(process.env.MLAB_URI, { useMongoClient: true })
   .then(() => console.log('Mongoose connected!'))
   .catch(error => {
     console.error('Catch:', error);

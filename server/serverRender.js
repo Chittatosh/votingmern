@@ -12,23 +12,26 @@ import reducer from '../common/reducer';
 import AppContainer from '../common/containers/AppContainer';
 
 const serverRender = (req, res) => {
-  Poll.find({}, null, {sort: {voteSum: -1}})
+  Poll.find({}, null, { sort: { voteSum: -1 } })
     .then(pollArr => {
       const normPollObj = pollArr.reduce((obj, item) => {
         obj[item._id] = item;
         return obj;
       }, {});
-      const preloadedState = { 
-        poll_idArr: pollArr.map(item => ''+item._id),
+      const preloadedState = {
+        poll_idArr: pollArr.map(item => `${item._id}`),
         normPollObj,
-        fbggId: (req.user && req.user.fbggId) || '', 
-        displayName: (req.user && req.user.displayName) || '', 
-        isFetching: '', 
-        fetchError: '', 
-        searchTerm: ''
+        fbggId: (req.user && req.user.fbggId) || '',
+        displayName: (req.user && req.user.displayName) || '',
+        isFetching: '',
+        fetchError: '',
+        searchTerm: '',
       };
       const store = createStore(reducer, preloadedState);
-      const serializedState = JSON.stringify(store.getState()).replace(/</g, '\\x3c');
+      const serializedState = JSON.stringify(store.getState()).replace(
+        /</g,
+        '\\x3c',
+      );
       const context = {};
       const serializedComponent = renderToString(
         <Provider store={store}>

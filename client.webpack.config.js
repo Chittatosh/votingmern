@@ -7,11 +7,13 @@ module.exports = {
   mode: 'development',
   target: 'web',
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: 'babel-loader',
-      exclude: /node_modules/,
-    }],
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
@@ -25,7 +27,8 @@ module.exports = {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
     },
   },
   output: {

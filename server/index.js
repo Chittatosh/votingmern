@@ -1,15 +1,20 @@
+import 'babel-polyfill';
+
 import http from 'http';
-import server from './server';
-import serverConfig from './serverConfig';
 
-const httpServer = http.createServer(server);
-httpServer.listen(serverConfig.port);
+import app from './app';
+import { PORT } from './urlconfig';
 
-let currentApp = server;
+require('pretty-error').start();
+
+const server = http.createServer(app);
+server.listen(PORT);
+
+let currentApp = app;
 if (module.hot) {
-  module.hot.accept('./server', () => {
-    httpServer.removeListener('request', currentApp);
-    httpServer.on('request', server);
-    currentApp = server;
+  module.hot.accept('./app', () => {
+    server.removeListener('request', currentApp);
+    server.on('request', app);
+    currentApp = app;
   });
 }

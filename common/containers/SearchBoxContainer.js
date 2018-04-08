@@ -6,9 +6,8 @@ const mapStateToProps = ({ searchTerm }) => ({ searchTerm });
 
 const mapDispatchToProps = { submitSearch };
 
-const SearchBoxContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchBoxComponent);
+const SearchBoxContainer = connect(mapStateToProps, mapDispatchToProps)(
+  SearchBoxComponent,
+);
 
 export default SearchBoxContainer;

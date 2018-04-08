@@ -1,8 +1,9 @@
+.env
 desktop.ini
 node_modules/
 yarn-error.log
+apierror.log
 stats.json
 serverdist/
 bs/
 dist/main.js
-server/serverConfig.js

@@ -2,28 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CardContainer from '../containers/CardContainer';
 
-const alert = message =>
-  <div className="card alert alert-primary alert-dismissible fade show" role="alert">
+const alert = message => (
+  <div
+    className="card alert alert-primary alert-dismissible fade show"
+    role="alert"
+  >
     {message}
-    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+    <button
+      type="button"
+      className="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>;
+  </div>
+);
 
 const CardListComponent = ({ _idArrForPage, fbggId, isFetching }) => (
   <div className="card-columns">
-    {!fbggId && alert('Sign in to create new polls or to add new choices to existing polls!')}
-    {isFetching==='newpoll_id' && alert('Fetching...')}
-    {_idArrForPage.map(_id => 
-      <CardContainer key={_id} {...{_id}}/>
-    )}
+    {!fbggId &&
+      alert(
+        'Sign in to create new polls or to add new choices to existing polls!',
+      )}
+    {isFetching === 'newpoll_id' && alert('Fetching...')}
+    {_idArrForPage.map(_id => <CardContainer key={_id} {...{ _id }} />)}
   </div>
 );
 
 CardListComponent.propTypes = {
   _idArrForPage: PropTypes.arrayOf(PropTypes.string).isRequired,
   fbggId: PropTypes.string.isRequired,
-  isFetching: PropTypes.string.isRequired
+  isFetching: PropTypes.string.isRequired,
 };
 
 export default CardListComponent;

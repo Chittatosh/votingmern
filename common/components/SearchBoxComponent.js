@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SearchBoxComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: this.props.searchTerm};
+    this.state = { value: this.props.searchTerm };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -20,7 +20,7 @@ class SearchBoxComponent extends React.Component {
     submitSearch(this.state.value);
   }
   handleClick() {
-    this.setState({value: ''});
+    this.setState({ value: '' });
     const { submitSearch } = this.props;
     submitSearch('');
   }
@@ -30,27 +30,23 @@ class SearchBoxComponent extends React.Component {
         <div className="input-group">
           <div className="input-group-prepend">
             <input
-              onClick={this.handleClick} 
-              className="btn btn-info" 
+              onClick={this.handleClick}
+              className="btn btn-info"
               type="button"
               value="Reset"
-              disabled={!this.props.searchTerm} 
+              disabled={!this.props.searchTerm}
             />
           </div>
-          <input 
-            type="text" 
+          <input
+            type="text"
             className="form-control"
-            placeholder="Search for..." 
+            placeholder="Search for..."
             aria-label="Search for..."
-            value={this.state.value} 
-            onChange={this.handleChange} 
+            value={this.state.value}
+            onChange={this.handleChange}
           />
           <span className="input-group-append">
-            <input 
-              type="submit" 
-              value="Go!" 
-              className="btn btn-secondary" 
-            />
+            <input type="submit" value="Go!" className="btn btn-secondary" />
           </span>
         </div>
       </form>
@@ -61,7 +57,9 @@ class SearchBoxComponent extends React.Component {
 SearchBoxComponent.propTypes = {
   searchTerm: PropTypes.string.isRequired,
   submitSearch: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(SearchBoxComponent);

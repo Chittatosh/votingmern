@@ -10,11 +10,11 @@ import searchTerm from './searchTerm';
 const reducer = combineReducers({
   poll_idArr,
   normPollObj,
-  fbggId, 
+  fbggId,
   displayName,
   isFetching,
   fetchError,
-  searchTerm
+  searchTerm,
 });
 
 export default reducer;

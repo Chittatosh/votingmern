@@ -54,17 +54,11 @@ passport.use(
   ),
 );
 
-passport.serializeUser((_id, cb) => {
-  cb(null, _id);
-  console.log('\x1b[41m%s\x1b[0m', 'serializeUser');
-});
+passport.serializeUser((_id, cb) => cb(null, _id));
 
 passport.deserializeUser((_id, cb) => {
   User.findById(_id)
-    .then(userDoc => {
-      cb(null, userDoc);
-      console.log('\x1b[41m%s\x1b[0m', 'deserializeUser');
-    }) // userDoc => req.user
+    .then(userDoc => cb(null, userDoc)) // userDoc => req.user
     .catch(error => {
       console.error(error);
       return cb(error);
@@ -72,4 +66,3 @@ passport.deserializeUser((_id, cb) => {
 });
 
 export default passport;
-

@@ -7,7 +7,13 @@ const MyButtonComponent = ({ myPollsBool, fbggId }) => (
     className={`btn btn-block btn-${myPollsBool ? 'warning' : 'success'} m-1`}
     to={myPollsBool ? '/allpollspage1' : `/mypolls${fbggId}page1`}
   >
-    {myPollsBool ? 'Back to All Polls' : 'Show My Polls'}
+    {myPollsBool ? (
+      <div>
+        <i className="fas fa-hand-point-left" /> Back to All Polls
+      </div>
+    ) : (
+      'Show My Polls'
+    )}
   </NavLink>
 );
 

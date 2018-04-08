@@ -70,41 +70,37 @@ class NewPollComponent extends React.Component {
           <div className="modal-body">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label htmlFor="pollTitle" className="col-form-label">
-                  Title Of The Poll *:
-                  {itsAlreadyThere && (
-                    <mark>
-                      <em> This title exists! Try another. </em>
-                    </mark>
-                  )}
-                  <input
-                    name="pollTitle"
-                    value={this.state.pollTitle}
-                    onChange={this.handleChange}
-                    type="text"
-                    className="form-control"
-                    id="pollTitle"
-                    placeholder="Which Tea Is Your Favorite?"
-                    maxLength="100"
-                    required
-                  />
-                </label>
+                Title Of The Poll *:
+                {itsAlreadyThere && (
+                  <mark>
+                    <em> This title exists! Try another. </em>
+                  </mark>
+                )}
+                <input
+                  name="pollTitle"
+                  value={this.state.pollTitle}
+                  onChange={this.handleChange}
+                  type="text"
+                  className="form-control"
+                  id="pollTitle"
+                  placeholder="Which Tea Is Your Favorite?"
+                  maxLength="100"
+                  required
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="myChoice" className="col-form-label">
-                  I Vote For *:
-                  <input
-                    name="myChoice"
-                    value={this.state.myChoice}
-                    onChange={this.handleChange}
-                    type="text"
-                    className="form-control"
-                    id="myChoice"
-                    placeholder="Black Tea"
-                    maxLength="30"
-                    required
-                  />
-                </label>
+                I Vote For *:
+                <input
+                  name="myChoice"
+                  value={this.state.myChoice}
+                  onChange={this.handleChange}
+                  type="text"
+                  className="form-control"
+                  id="myChoice"
+                  placeholder="Black Tea"
+                  maxLength="30"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="otherChoices" className="col-form-label">

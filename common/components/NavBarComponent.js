@@ -30,7 +30,7 @@ const NavBarComponent = ({ idProvider, displayName, btwnSlashNPage }) => {
         className={`btn btn-block btn-social btn-${idProvider} m-1`}
         href="/logout"
       >
-        <span className={`fa fa-${idProvider}`} />Logout {displayName}
+        <span className={`fab fa-${idProvider}`} />Logout {displayName}
       </a>
     </div>
   );
@@ -43,7 +43,7 @@ const NavBarComponent = ({ idProvider, displayName, btwnSlashNPage }) => {
           className={`btn btn-block btn-social btn-${provider} m-1`}
           href={`/${provider}login`}
         >
-          <span className={`fa fa-${provider}`} />
+          <span className={`fab fa-${provider}`} />
           {`Sign in with ${provider}`}
         </a>
       ))}

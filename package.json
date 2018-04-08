@@ -12,13 +12,13 @@
   "scripts": {
     "start": "node bs/server",
     "heroku-postbuild": "webpack && rm -rf bs && mkdir bs && mkdirp bs/server && babel server -d bs/server && mkdirp bs/common && babel common -d bs/common",
-    "serve": "nodemon --exec babel-node server --ignore dist/ --ignore tests/",
-    "dev": "webpack -wd",
     "hotserver": "rm -rf serverdist/ && webpack --config ./server.webpack.config.js",
     "hotclient": "webpack-dev-server --config ./client.webpack.config.js",
-    "webpack": "webpack --json > stats.json",
     "hot": "npm-run-all --parallel hotserver hotclient",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "serve": "nodemon --exec babel-node server --ignore dist/ --ignore tests/",
+    "dev": "webpack -wd",
+    "webpack": "webpack --json > stats.json"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -55,7 +55,7 @@
     "start-server-webpack-plugin": "^2.2.5",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.1",
+    "webpack-dev-server": "^3.1.3",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {

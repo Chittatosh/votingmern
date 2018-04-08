@@ -1,6 +1,15 @@
-const cacheName = 'weatherPWA-step-6-1';
+const cacheName = 'votingmern';
 
-const filesToCache = ['/', '/favicon.ico'];
+const filesToCache = [
+  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+  'https://cdn.jsdelivr.net/gh/lipis/bootstrap-social@5.1.1/bootstrap-social.css',
+  'https://d3js.org/d3.v5.min.js',
+  'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+  '/favicon.ico',
+  'https://code.jquery.com/jquery-3.2.1.slim.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
+  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
+];
 
 self.addEventListener('install', e => {
   console.log('[ServiceWorker] Install');

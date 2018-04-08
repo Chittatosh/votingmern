@@ -17,10 +17,12 @@ const PaginationComponent = ({
       );
     }
     return (
-      <PageNumComponent
-        className="page-item"
-        {...{ btwnSlashNPage, pageNumFromUrl, buttonText }}
-      />
+      <li>
+        <PageNumComponent
+          className="page-item"
+          {...{ btwnSlashNPage, pageNumFromUrl, buttonText }}
+        />
+      </li>
     );
   };
   const pagination = (
@@ -28,15 +30,16 @@ const PaginationComponent = ({
       <ul className="pagination justify-content-center">
         {iteratorButton(pageNumFromUrl === 1, 'Previous')}
         {Array.from(Array(totalPages).keys()).map(index => (
-          <PageNumComponent
-            key={index}
-            className="page-item"
-            {...{
-              btwnSlashNPage,
-              pageNumFromUrl,
-              buttonText: `${index + 1}`,
-            }}
-          />
+          <li key={index}>
+            <PageNumComponent
+              className="page-item"
+              {...{
+                btwnSlashNPage,
+                pageNumFromUrl,
+                buttonText: `${index + 1}`,
+              }}
+            />
+          </li>
         ))}
         {iteratorButton(pageNumFromUrl === totalPages, 'Next')}
       </ul>
